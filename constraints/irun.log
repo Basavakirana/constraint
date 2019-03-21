@@ -1,0 +1,81 @@
+irun(64): 15.20-s051: (c) Copyright 1995-2018 Cadence Design Systems, Inc.
+TOOL:	irun(64)	15.20-s051: Started on Mar 12, 2019 at 05:20:05 IST
+irun
+	-access +rwc
+	spi1vp.sv
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		$unit_0x25b164c0
+		spi1
+ncelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.\$unit_0x25b164c0 :compilation_unit <0x5b89b077>
+			streams:   0, words:     0
+		worklib.\$unit_0x25b164c0 :compilation_unit <0x72d8685a>
+			streams:   7, words:  2130
+		worklib.spi1:sv <0x736fabd1>
+			streams:   1, words:  4263
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                   Instances  Unique
+		Modules:                   1       1
+		Registers:                 6      12
+		Initial blocks:            1       1
+		Assertions:                1       1
+		Compilation units:         1       1
+		SV Class declarations:     1       1
+		SV Class specializations:  1       1
+	Writing initial simulation snapshot: worklib.spi1:sv
+Loading snapshot worklib.spi1:sv .................... Done
+SVSEED default: 1
+ncsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+ncsim> source /tools/cadence/INCISIVE152/tools/inca/files/ncsimrc
+ncsim> run
+
+
+spi transactions are
+  cpol=0,cpha=1
+  mode=1
+  clk_pattern=10101010
+  data_pattern=00000101
+  data= 80
+
+
+spi transactions are
+  cpol=1,cpha=0
+  mode=2
+  clk_pattern=01010101
+  data_pattern=10111001
+  data= 19
+
+
+spi transactions are
+  cpol=1,cpha=1
+  mode=3
+  clk_pattern=01010101
+  data_pattern=11101100
+  data= 70
+
+
+spi transactions are
+  cpol=0,cpha=0
+  mode=0
+  clk_pattern=10101010
+  data_pattern=10110101
+  data= 31
+
+
+spi transactions are
+  cpol=1,cpha=0
+  mode=2
+  clk_pattern=01010101
+  data_pattern=11100100
+  data= 78
+
+
+ncsim: *W,RNQUIE: Simulation is complete.
+ncsim> exit
+TOOL:	irun(64)	15.20-s051: Exiting on Mar 12, 2019 at 05:20:05 IST  (total: 00:00:00)
