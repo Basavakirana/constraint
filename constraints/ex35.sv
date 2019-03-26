@@ -1,36 +1,51 @@
 class trans;
 
-    rand bit[9:0]phone_no;
+    rand reg phone_no[];
     typedef enum{India,USA,Canada}country_c;
     rand country_c country;
 
     constraint c1 {country dist{India:=50,USA:=25,Canada:=25};}
-    constraint c2 {if(country==India)
-                    phone_no[9] inside {6,7,8,9};
-                   else if(country==USA)
-                    phone_no[9] inside {3,4,5};
-                   else
-                    phone_no[9] inside {1,2};}
+    constraint c2 {foreach(phone_no[i]){
+                    if(i==0 & country==India)
+                     phone_no[i] inside {6,7,8,9};
+                   else if(i==0 & country==USA)
+                    phone_no[i] inside {3,4,5};
+                   else if(i==0 & country==Canada)
+                    phone_no[i] inside {1,2};}}
+    constraint c3 {phone_no.size()==10;}
+//    constraint c4 {phone_no[1:9] inside {[0:9]};}
 
     function void post_randomize();
         if(country==India)
         begin
             $display("country=%s",country.name);
             $write("+91-");
-            $write("phone number=%d",phone_no);
+            foreach(phone_no[i])
+            begin
+//                $write("+91-");
+                $write("%d",phone_no[i] );
+            end
         end  
         else if(country==USA)
         begin
             $display("country=%s",country.name);
             $write("+22-");
-            $write("phone number=%d",phone_no);
+            foreach(phone_no[i])
+            begin
+//                $write("+22-");
+                $write("%d",phone_no[i] );
+            end
         end
         else
         begin
             $display("country=%s",country.name);
             $write("+33-");
-            $write("phone number=%d",phone_no);
-        end
+            foreach(phone_no[i])
+            begin
+//               $write("+33-");
+                $write("%d",phone_no[i] );
+            end
+       end
      endfunction
 
 endclass
@@ -46,5 +61,6 @@ endclass
                 begin
                     assert(t1.randomize());
                  end
+                 $display();
             end
     endmodule
