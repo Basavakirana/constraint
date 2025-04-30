@@ -38,3 +38,40 @@ endclass
                     end
             end
     endmodule
+
+//using only constraints but not postrsndomize
+
+/* class trans;
+    rand logic [15:0] payload_data[];
+
+    constraint c1 {
+        payload_data.size inside {[10:20]};
+        payload_data[0] inside {[1:100]};  // Start value
+
+        foreach (payload_data[i]) {
+            if (i > 0) {
+                payload_data[i] == payload_data[i-1] + 2;
+            }
+        }
+    }
+endclass
+
+module ex10;
+    trans t1;
+
+    initial begin
+        t1 = new();
+        repeat (5) begin
+            if (t1.randomize()) begin
+                $display("Payload size = %0d", t1.payload_data.size());
+                foreach (t1.payload_data[i]) begin
+                    $display("payload_data[%0d] = %0d", i, t1.payload_data[i]);
+                end
+            end else begin
+                $display("Randomization failed!");
+            end
+        end
+    end
+endmodule
+
+*/
