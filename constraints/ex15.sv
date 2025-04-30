@@ -24,4 +24,6 @@ endclass                                      //01111(31)
                         $display("value=%d",t1.value);
                     end
             end
+
+        //for mul of 4 i.e 2**2 last two digits will be 00 for mul of 4 so (value & 2'b11)==0;
     endmodule
